@@ -1,0 +1,165 @@
+#6.1 요약
+  VS Code shortcut
+  !만치고 엔터 - 기본 html코드 전부생성
+  shift + Alt + Down - 해당 라인 아래에 복붙
+  Ctrl + / - 해당 라인 주석처리 
+  Ctrl + Space - 자동완성 리스트 다시 띄우기  
+
+#6.2 요약
+  class명 정하는 방법 : 가능한한 알기 쉽고 길게 (중복되지 않게) BEM룰을 사용
+  id는 JS와 연동할때만 작성하고, css연동은 class를 주로 사용한다.
+  BEM(Block Element Modifier) : block__element--Modifier
+      block - 가장 맨 위에 해당하는 요소. 처음선언하는 클래스
+      Element - blcok의 하위에 해당하는 요소. 즉, 자식에 해당함
+      Modifier - 같은 층에서 변경사항이 있을때 적용할 수 있는 요소.
+
+      <EX>
+      <div class="block block--Modifier">
+        <p class="block__element block__element--Modifier"> </p>
+      </div>
+
+#6.3 FontAwesome
+  https://fontawesome.com/v5/search?q=wifi&s=solid%2Cbrands
+  주로 위 사이트에서 아이콘을 가져온다.
+
+  <사용법>
+  1. 먼저 body 맨 아래에 index.html에 있는 script를 붙인다. (처음 > 위치 주의)
+      <script
+      src="https://kit.fontawesome.com/6478f529f2.js"
+      crossorigin="anonymous"
+    ></script>
+  2. 위 사이트에서 5.1v 기준으로 원하는 아이콘을 검색한다.
+  3. 아이콘을 클릭하면 <i>라는 js코드가 나온다. html에 복붙한다.
+
+#6.4 Sign up Screen Part 2
+  header에도 class를 넣어줘라. (수 많은 header가 있을 예정이니까)
+  이처럼 먼저 웹페이지 구조를 설계하고, 어디에 무엇이 쓰일지를 먼저 예상해둬라.
+
+#6.5 Status Bar
+  특별한 Font 추가 방법
+    1. google font로 검색 후, 해당 사이트에서 마음에 드는 폰트를 선택.
+    2. 우측에 import, css 코드를 css시트에 붙여넣음.
+  
+  특정한 내용물 가운데 정렬 하는 방법
+    space-between만으로는 center요소가 가운데 정렬 안될 경우가 있다. (각각의 요소 크기가 다르기때문) 이럴때 쓰는 방법.
+      1. space-between이 아닌 center로 정렬
+      2. 각각의 요소 width 33%를 부여
+      3. 가운데 요소에 flex, center 부여
+      4. 마지막 요소에 flex, flex-end 부여
+      5. 각 요소 내용물이 flex로 인해 형클어질 경우, align-item 등으로 내용물 재정렬
+  
+#6.6 Sign up screen Part 3
+  reset css
+  CSS 초기에는 body 등에도 margin이 적용된 상태.
+  이를 없애기위해 reset css라는게 있음.
+  reset.css라는 파일을 만들어서 reset코드를 복붙후, 원래 css에 붙임. (@import "reset.css";)
+  물론, 이 경우 h1 등등이 갖는 원래 값도 모두 초기화된다. (말그대로 100% 커스텀css를 만드는식)
+
+  reset css이외에도 css를 계속 작성하다보면 쓸데없이 길어지는 경우가 있다.
+  따라서 각각 유닛으로 분해해서 css파일을 별도로 만들고, 이를 @import하는 식으로 사용하면 구분하기 쉽다.
+
+  물론 최종적으로는 다 합쳐야할거다.
+
+#6.7 Login Form P1
+  <사용문법>
+  ::placeholder
+  :focus
+  transition
+  :root
+
+#6.8 Login Form P2
+  <사용문법>
+  input:not([type="submit"]) - submit이 아닌 input에만 적용
+  cursor: pointer;
+  color: inherit; - 부모로부터 상속. default값은 black.
+
+#6.9 Recap and Forms
+  파일들을 조직화하기 위해 screen, components 폴더 등을 추가하고 여기에 해당 css를 넣는게 좋다.
+
+  <form>추가 설명
+  form property로 아래와 같은 것들이 있다.
+  action="이동할 html" - form의 submit을 작동시켰을때 이동할 페이지
+  method="GET or POST" - 서버에 정보를 전하는 방식 
+                         GET: url에 정보를 넣어 넘겨준다. 보안취약
+                         POST: 별도의 폼에 정보를 넣어 넘겨준다.
+
+#6.10 Nav-bar P1
+  nav에는 주로 ul이 쓰인다.
+  여기에 쓰인 ul들은 구글 검색에서도 인식한다.
+
+  vs code 단축키 : nav>ul>li*4>a 라고치면 자동으로 양식완성
+
+#6.11 Nav-bar P2
+  position:fixed, absolute
+    두 속성값은 block요소를 inblock요소로 만들어버린다.
+    그래서 nav요소가 갑자기 줄어든셈.
+    이를 해결하기 위해선 nav에 따로 width를 부여해야함.
+
+#6.12 Border Box
+  box-sizing: border-box; 
+    padding을 줄 경우, 기본적으로 상자크기가 padding만큼 커지는 효과를 낳음.
+    상자가 커지는것을 막고 싶다면, 위와같은 코드를 준다. (기본값 content-box)
+    즉, 자신을 둘러싼 경계선을 의식해서 box를 만든다는 뜻.
+
+#6.13 Nav-bar P3
+  display: flex;
+   flex도 해당 요소에 block특성을 부여한다.
+
+#6.14 ~ 6.24
+ 특별한 내용 없이 화면따라 코딩
+
+#6.25
+ 테크닉
+  component로 다른걸 불러와서 썼는데, 이쪽 페이지에만 추가적으로 margin등을 편집하고 싶을 때:
+    불러온 component에 이 페이지 전용 class를 추가해서 사용하면된다.
+
+#6.27
+  테크닉
+    요소들의 중앙정렬을 좀 더 쉽고 정확하게 하고 싶다면, 요소간 간격에
+    margin: auto 값을 이용해본다.
+
+    아이콘은 크기가 같아보여도 사실 다른 크기를 가지고 있다.
+    이에따라 아이콘 옆에 오는 글자 정렬이 문제가 생길 수 있다.
+    이 문제는 아이콘한테 의도적으로 width를 부여하면 해결된다.
+
+#6.29
+  테크닉
+    z-index : position fixed or absolute 등의 요소가 서로 겹칠 경우,
+    겹침을 해제하기 위해 z축의 순서를 주는 방법
+    초기값은 0,
+    숫자가 높을수록 앞에 배치
+
+    opaciti의 경우 z-index에 영향미침
+    그럴땐 rgba()로 투명도를 주는게 좋다.
+
+#6.31
+  테크닉
+    border-top-left-radius 처럼 특정 구석에만 R주는 것도 가능
+
+#6.32
+  테크닉
+    flex children의 배열 순서를 바꾸는 법 2가지
+      1) 각 flex children에게 각각 order:0(제일 앞)  order:1을 부여
+      2) 부모를 지정해서 flex-direction: row-reverse 부여
+
+#6.34
+  지식
+    100vh : 스크린 화면 높이 그대로
+    100vw : 스크린 너비 그대로
+    100% : 부모 요소 전체
+
+#6.35
+  테크닉
+    애니메이션이 끝나고 마지막 상태를 유지하는 조건 -> infinite 자리에 forward
+    (하지만, 이건 애니메이션 창 자체를 사라지게 할 수는 없음)
+
+    애니메이션이 끝나고 해당 레이어가 완전히 사라지게 하는 법
+    css keyframe 마지막에 visibility: hidden을 추가
+    animation 지정시는 forward와 결합.
+    (단, 여전히 html에는 존재)
+    (완전히 삭제하기 위해선 JS기술이 필요)
+
+#6.37
+  테크닉 
+    will-change: transform
+      애니메이션이 불안정할 경우, 애니메이션을 줄 css에 이 속성을 부여하는 것 만으로도 그래픽카드를 가속화시켜서 부드럽게 만들어준다.
